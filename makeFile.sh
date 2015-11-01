@@ -52,7 +52,7 @@ if [ "$arg" = "all" ]; then
   if [ ! $ckutils = 0 ]; then
     javac -d $BASE_BIN $BASE_SRC/utils/*.java
   fi
-  javac -d $BASE_BIN $BASE_SRC/sols/*.java
+  javac -d $BASE_BIN $BASE_SRC/sols/Solution.java
   exit 0
 fi
 

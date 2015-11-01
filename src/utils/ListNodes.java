@@ -3,16 +3,15 @@ import objs.ListNode;
 
 public class ListNodes {
     
-  public ListNode getList(String digits) {
+  public ListNode getList(int[] digits) {
     ListNode head = new ListNode(-1);
-    if (digits.length() == 0) {
+    if (digits.length == 0) {
       return head.next;
     }
 
-    String[] vals = digits.split(",");
     ListNode p = head;
-    for (int i = 0; i < vals.length; i++) {
-      p.next = new ListNode(Integer.parseInt(vals[i]));
+    for (int i = 0; i < digits.length; i++) {
+      p.next = new ListNode(digits[i]);
       p = p.next;
     }
     return head.next;
@@ -32,7 +31,7 @@ public class ListNodes {
     return head.next;
   }
 
-  public ListNode getCycleList(String digits, int point) {
+  public ListNode getCycleList(int[] digits, int point) {
     ListNode head = getList(digits);
     if (head == null || head.next == null) return head;
     if (point == 0) point = 1;

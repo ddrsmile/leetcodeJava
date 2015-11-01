@@ -7,10 +7,12 @@ if [ -z "$1" ]; then
   exit 0
 fi
 
-cp -f $CURRENT_DIR/src/main/$1.java $CURRENT_DIR/src/main/Main.java
+cp -f $BASE_SRC/main/$1.java $BASE_SRC/main/Main.java
 
-cp -f $CURRENT_DIR/src/sols/$1.java $CURRENT_DIR/src/sols/Solution.java
+cp -f $BASE_SRC/sols/$1.java $BASE_SRC/sols/Solution.java
 
-javac -d $CURRENT_DIR/tmp $CURRENT_DIR/src/main/Main.java
+./makeFile.sh
 
-java -cp $CURRENT_DIR/tmp Main $CURRENT_DIR/input/$1.txt
+javac -d $BASE_BIN/  $BASE_SRC/main/Main.java
+
+java main.Main $CURRENT_DIR/input/$1.txt

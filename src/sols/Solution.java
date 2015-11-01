@@ -1,3 +1,4 @@
+package sols;
 import java.util.*;
 
 public class Solution {

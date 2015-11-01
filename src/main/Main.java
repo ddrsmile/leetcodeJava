@@ -1,3 +1,4 @@
+package main;
 //Import the required classes of LeetCode;
 import objs.*;
 import utils.*;

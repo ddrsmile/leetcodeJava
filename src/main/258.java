@@ -16,19 +16,10 @@ public class Main {
     
     ArrayList<int[]> ins = ih.getInputData();
 
-    for (int i = 0; i < ins.size()/2; i++) {
-      ListNode head = listUtil.getList(ins.get(2*i));
-      ListNode node = head;
-      int n = ins.get(2*i + 1)[0];
-      for (int j = 1; j < n; j++) {
-        node = node.next;
-      }
-      sol.deleteNode(node);
-      while (head.next != null) {
-        System.out.print(head.val + ", ");
-        head = head.next;
-      }
-      System.out.println(head.val);
+    for (int i = 0; i < ins.size(); i++) {
+      int n = ins.get(i)[0];
+      System.out.println(sol.addDigits(n));
+
     }
   }
 }

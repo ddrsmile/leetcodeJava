@@ -1,11 +1,8 @@
 package sols;
-import java.util.*;
-import objs.ListNode;
 
 public class Solution {
-  public void deleteNode(ListNode node) {
-    if (node == null || node.next == null) return;
-    node.val = node.next.val;
-    node.next = node.next.next;
+  public boolean canWinNim(int n) {
+    if (n < 1) return false;
+    return n%4 == 0;
   }
 }

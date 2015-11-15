@@ -17,18 +17,18 @@ public class Main {
     ArrayList<int[]> ins = ih.getDataAsNum();
 
     for (int i = 0; i < ins.size()/2; i++) {
-      ListNode head = listUtil.getList(ins.get(2*i));
-      ListNode node = head;
-      int n = ins.get(2*i + 1)[0];
-      for (int j = 1; j < n; j++) {
-        node = node.next;
+      ListNode l1 = listUtil.getList(ins.get(2*i));
+      ListNode l2 = listUtil.getList(ins.get(2*i+1));
+      ListNode headOut = sol.addTwoNumbers(l1, l2);
+      if (headOut == null) {
+        System.out.println("null");
+        continue;
       }
-      sol.deleteNode(node);
-      while (head.next != null) {
-        System.out.print(head.val + ", ");
-        head = head.next;
+      while (headOut.next != null) {
+        System.out.print(headOut.val + ", ");
+        headOut = headOut.next;
       }
-      System.out.println(head.val);
+      System.out.println(headOut.val);
     }
   }
 }

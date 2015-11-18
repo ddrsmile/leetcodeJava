@@ -11,14 +11,14 @@ import java.util.*;
 public class Main {
   public static void main(String[] args) throws IOException {
     InputHandler ih = new InputHandler(args[0]);
-    ListNodes listUtil = new ListNodes();
     Solution sol = new Solution();
     
-    ArrayList<String> ins = ih.getDataAsString();
+    ArrayList<int[]> inn = ih.getDataAsNum();
 
-    for (int i = 0; i < ins.size(); i++) {
-      String s = ins.get(i);
-      System.out.println(sol.lengthOfLongestSubstring(s));
+    for (int i = 0; i < inn.size()/2; i++) {
+      int[] arr1 = inn.get(2*i);
+      int[] arr2 = inn.get(2*i + 1);
+      System.out.println(sol.findMedianSortedArrays(arr1, arr2));
     }
   }
 }

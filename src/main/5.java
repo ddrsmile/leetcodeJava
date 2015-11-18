@@ -18,7 +18,7 @@ public class Main {
 
     for (int i = 0; i < ins.size(); i++) {
       String s = ins.get(i);
-      System.out.println(sol.lengthOfLongestSubstring(s));
+      System.out.println(sol.longestPalindrome(s));
     }
   }
 }

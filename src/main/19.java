@@ -14,11 +14,11 @@ public class Main {
     ListNodes listUtil = new ListNodes();
     Solution sol = new Solution();
     
-    ArrayList<int[]> ins = ih.getDataAsNum();
+    ArrayList<int[]> inn = ih.getDataAsNum();
 
-    for (int i = 0; i < ins.size()/2; i++) {
-      ListNode headIn = listUtil.getList(ins.get(2*i));
-      int n = ins.get(2*i + 1)[0];
+    for (int i = 0; i < inn.size()/2; i++) {
+      ListNode headIn = listUtil.getList(inn.get(2*i));
+      int n = inn.get(2*i + 1)[0];
       ListNode headOut = sol.removeNthFromEnd(headIn, n);
       while (headOut.next != null) {
         System.out.print(headOut.val + ", ");

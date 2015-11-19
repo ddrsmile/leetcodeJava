@@ -11,7 +11,7 @@ Mac OS X
 ### 2. prepare the files  
 #### 2.1 solutions  
 write down the solution with the class Solution, and then name the file with the # of the problem.  
-ex. file naem like 1.java which contents the solution of problem 1.  
+ex. file name like 1.java which contents the solution of problem 1.  
 put the file into "currentdir/src/sols/"
 #### 2.2 main
 write down the main procedure with the class, and then name the file with the # of the problem.

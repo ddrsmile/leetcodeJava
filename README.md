@@ -35,7 +35,7 @@ public class Solution {
 ```
 put the file into "currentdir/src/sols/"
 #### 2.2 main
-write down the main procedure with the class, and then name the file with the # of the problem.
+write down the main procedure with the class, and then name the file with the # of the problem.  
 ex. file name like 1.java
 ```java
 package main;
@@ -64,5 +64,51 @@ public class Main {
 }
 ```
 put the file into "currentdir/src/main/"  
-### 3. ./run.sh # of problem.
+##### InputHandler
+InputHandler class receives String variable which contents the path of input files to create the object.
+
+To get the input data, one is getDataAsNum() and the other one is getDataAsString().
+Both mehtods return the data in ArrayList.  
+getDataAsNum() returns ArrayList<int[]>  
+getDataAsString() returns ArrayList<String>  
+### 3. prepare the input file
+write down your input contents in the txt file, and then name the file with the # of problem.  
+one input (one arguement) one line.  
+```java
+Solution.sol1(int a)
+Solution.sol2(int a, int b)
+```  
+For sol1, one line per test case. On the other hand, for sol2, two lines per testcase.  
+For example,
+```txt
+[2, 7, 11, 15]
+9
+```
+##### some simple rule
+single number:  
+```txt
+1  
+1.3  
+```  
+String:  
+```txt
+"string"
+```  
+int array:
+```txt
+[1,3,4]
+```  
+string array:  
+to be implement....
+
+To create the listNode, use int array as input.  
+```txt
+[1,3,4]
+```  
+To create the binary tree, use String as input. Use # as the null node.
+```txt
+[1,2,#,4,5]
+```  
+
+### 4. ./run.sh # of problem.
 ex. ">./run.sh 1" will run the problem 1 and show the output.

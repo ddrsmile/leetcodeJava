@@ -28,7 +28,7 @@ public class InputHandler {
   }
 
   private String getString(String str) {
-    str = str.replace("\"","").replace("[","").replace("]","").replace(" ","");
+    str = str.replace("\"","").replace("[","").replace("]","");
     return str;
   }
 
@@ -53,5 +53,4 @@ public class InputHandler {
     }
     return ins;
   }
-
 }

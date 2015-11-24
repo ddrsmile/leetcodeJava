@@ -13,10 +13,10 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<String> ins = ih.getDataAsString();
-    for (int i = 0; i < ins.size(); i++) {
-      String s = ins.get(i);
-      System.out.println(sol.romanToInt(s));
+    ArrayList<int[]> inn = ih.getDataAsNum();
+    for (int i = 0; i < inn.size(); i++) {
+      int[] height = inn.get(i);
+      System.out.println(sol.maxArea(height));
     }
   }
 }

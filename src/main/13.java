@@ -13,7 +13,7 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<String> ins = ih.getDataAsString();
+    ArrayList<String> ins = ih.getDataAsStr();
     for (int i = 0; i < ins.size(); i++) {
       String s = ins.get(i);
       System.out.println(sol.romanToInt(s));

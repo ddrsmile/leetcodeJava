@@ -14,7 +14,7 @@ public class Main {
     Trees trees = new Trees();
     Solution sol = new Solution();
     
-    ArrayList<String> ins = ih.getDataAsString();
+    ArrayList<String> ins = ih.getDataAsStr();
 
     for (int i = 0; i < ins.size(); i++) {
       TreeNode rootIn = trees.getBT(ins.get(i));

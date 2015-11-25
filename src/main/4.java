@@ -13,7 +13,7 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<int[]> inn = ih.getDataAsNum();
+    ArrayList<int[]> inn = ih.getDataAsNumList();
 
     for (int i = 0; i < inn.size()/2; i++) {
       int[] arr1 = inn.get(2*i);

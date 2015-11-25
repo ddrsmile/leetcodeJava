@@ -14,7 +14,7 @@ public class Main {
     ListNodes listUtil = new ListNodes();
     Solution sol = new Solution();
     
-    ArrayList<String> ins = ih.getDataAsString();
+    ArrayList<String> ins = ih.getDataAsStr();
 
     for (int i = 0; i < ins.size(); i++) {
       String s = ins.get(i);

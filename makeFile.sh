@@ -6,7 +6,8 @@ if [ "$arg" = 0 ]; then
 fi
 
 if [ -z "$CURRENT_DIR" -o ! "$CURRENT_DIR"=$(PWD)  ]; then
-  source setEnv.sh  
+  echo "Please resouce setEnv.sh"
+  exit 0
 fi
 
 if [ -z "$arg" ]; then

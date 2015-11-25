@@ -49,7 +49,7 @@ public class InputHandler {
     String[] strs = str.split(",");
     String[] out = new String[strs.length];
     for (int i = 0; i < strs.length; i++) {
-      out[i] = strs[i].trim();
+      out[i] = strs[i].trim().replace("\"", "");
     }
     return out;
   }

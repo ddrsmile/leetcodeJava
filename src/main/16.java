@@ -13,11 +13,11 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<String> ins = ih.getDataAsStr();
-    for (int i = 0; i < ins.size(); i++) {
-      String s = ins.get(i);
-      System.out.print(s + ": ");
-      System.out.println(sol.isValid(s));
+    ArrayList<int[]> innL = ih.getDataAsNumList();
+    for (int i = 0; i < innL.size()/2; i++) {
+      int[] nums = innL.get(2*i);
+      int target = innL.get(2*i + 1)[0];
+      System.out.println(sol.threeSumClosest(nums, target));
     }
   }
 }

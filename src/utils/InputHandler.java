@@ -40,7 +40,7 @@ public class InputHandler {
   }
 
   private String getStr(String str) {
-    str = str.replace("\"","").replace("[","").replace("]","");
+    str = str.replace("\"","");
     return str;
   }
   

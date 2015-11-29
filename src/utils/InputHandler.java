@@ -29,7 +29,8 @@ public class InputHandler {
   }
 
   private int[] getNumList(String str) {
-    str = str.replace(" ", "").replace("[","").replace("]","");
+    str = str.trim();
+    str = str.substring(1, str.length()-1).replace(" ", "");
     if (str.length() == 0) return new int[0];
     String[] nums = str.split(",");
     int[] out = new int[nums.length];
@@ -45,7 +46,8 @@ public class InputHandler {
   }
   
   private String[] getStrList(String str) {
-    str = str.replace("[","").replace("]","");
+    str = str.trim();
+    str = str.substring(1, str.length() - 1);
     String[] strs = str.split(",");
     String[] out = new String[strs.length];
     for (int i = 0; i < strs.length; i++) {

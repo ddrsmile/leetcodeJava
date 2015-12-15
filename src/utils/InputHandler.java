@@ -30,7 +30,7 @@ public class InputHandler {
 
   private int[] getNumList(String str) {
     str = str.trim();
-    str = str.substring(1, str.length()-1).replace(" ", "");
+    str = str.length() == 1?str:str.substring(1, str.length()-1).replace(" ", "");
     if (str.length() == 0) return new int[0];
     String[] nums = str.split(",");
     int[] out = new int[nums.length];

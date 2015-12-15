@@ -1,1 +1,7 @@
-language: java
+language: sh
+
+before_script:
+  - source setEnv.sh
+
+script:
+  - ./run 1

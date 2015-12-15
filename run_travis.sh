@@ -1,17 +1,18 @@
 #!/bin/bash
 arg=$1
 
-if [ -z "$1" ]; then
-  echo "Please input the problem number"
-  echo "For example: ./run 1"
-  exit 0
-fi
+
 
 cp -f $BASE_SRC/main/$1.java $BASE_SRC/main/Main.java
 
 cp -f $BASE_SRC/sols/$1.java $BASE_SRC/sols/Solution.java
 
-./makeFile_travis.sh
+
+javac -d $BASE_BIN $BASE_SRC/objs/*.java
+
+javac -d $BASE_BIN $BASE_SRC/utils/*.java
+
+javac -d $BASE_BIN $BASE_SRC/sols/Solution.java
 
 javac -d $BASE_BIN/  $BASE_SRC/main/Main.java
 

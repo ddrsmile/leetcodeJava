@@ -1,4 +1,4 @@
-language: sh
+language: bash
 
 branches:
   only:
@@ -8,4 +8,4 @@ before_script:
   - source setEnv.sh
 
 script:
-  - ./run 1
+  - ./run.sh 1

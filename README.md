@@ -1,4 +1,4 @@
-# leetcodeJava
+# leetcodeJava [![Build Status](https://travis-ci.org/ddrsmile/leetcodeJava.svg?branch=master)](https://travis-ci.org/ddrsmile/leetcodeJava)  
 This repository manages source I used to practice the algorithms on LeetCode with Java.  
 All the problems belong to LeetCode.  
 https://leetcode.com/  

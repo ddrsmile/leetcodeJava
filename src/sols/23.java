@@ -3,7 +3,7 @@ import java.util.*;
 import objs.ListNode;
 
 public class Solution {
-  public ListNode removeNthFromEnd(ListNode[] lists) {
+  public ListNode mergeKLists(ListNode[] lists) {
     if (lists == null || lists.length == 0) return null;
     return merges(lists, 0, lists.length - 1);
   }
@@ -15,7 +15,7 @@ public class Solution {
       ListNode right = merges(lists, mid+1, high);
       return mergeTwo(left, right);
     }
-    return lists[0];
+    return lists[low];
   }
 
   private ListNode mergeTwo(ListNode l1, ListNode l2) {

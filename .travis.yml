@@ -8,4 +8,4 @@ before_script:
   - source setEnv_travis.sh
 
 script:
-  - ./run_travis.sh 1
+  - ./run_travis.sh 23

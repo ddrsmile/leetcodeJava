@@ -8,6 +8,7 @@ public class InputHandler {
   String inputPath;
   ArrayList<Integer> inn;
   ArrayList<int[]> innL;
+  ArrayList<ArrayList<int[]>> innLs;
   ArrayList<String> ins;
   ArrayList<String[]> insL;
   BufferedReader br;
@@ -38,6 +39,23 @@ public class InputHandler {
       out[i] = Integer.parseInt(nums[i]);
     }
     return out;
+  }
+  
+  private ArrayList<int[]> getListOfNumList(String str) {
+    str = str.trim();
+    str = str.length() == 1?str:str.substring(1, str.length()-1).replace(" ", "");
+    if (str.length() == 0) return new ArrayList<int[]>();
+    String[] numLists = str.split("],");
+    
+    for (int i = 0; i < numLists.length - 1; i++) {
+      numLists[i] = numLists[i] + "]";
+    }
+
+    ArrayList<int[]> innL = new ArrayList<int[]>();
+    for (int i = 0; i < numLists.length; i++) {
+      innL.add(getNumList(numLists[i]));
+    }
+    return innL;
   }
 
   private String getStr(String str) {
@@ -76,6 +94,17 @@ public class InputHandler {
       innL.add(getNumList(in));
     }
     return innL;
+  }
+
+  public ArrayList<ArrayList<int[]>> getDataAsListNumList() throws IOException {
+    if (inputPath == null || inputPath.length() == 0) return innLs;
+    innLs = new ArrayList<ArrayList<int[]>>();
+    br = new BufferedReader(new FileReader(inputPath));
+    String in = null;
+    while ((in = br.readLine()) != null) {
+      innLs.add(getListOfNumList(in));
+    }
+    return innLs;
   }
 
   public ArrayList<String> getDataAsStr() throws IOException {

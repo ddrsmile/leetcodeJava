@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import utils.InputCheck;
 
 public class InputHandler {
   String inputPath;
@@ -12,18 +13,22 @@ public class InputHandler {
   ArrayList<String> ins;
   ArrayList<String[]> insL;
   BufferedReader br;
+  
+  // check whether input string is numeric or not
+  InputCheck IC;
 
   public InputHandler(String inputPath) {
     this.inputPath = inputPath;
     inn = null;
     ins = null;
+    IC = new InputCheck();
   }
 
   private int getNum(String str) {
     str = str.replaceAll("[^0-9]","");
-    try {
+    if (IC.isNum(str)) {
       return Integer.parseInt(str);
-    } catch (Exception ex) {
+    } else {
       System.out.println("The input was not Integer, Please check the input file!!!");
       return 0;
     }
@@ -31,7 +36,7 @@ public class InputHandler {
 
   private int[] getNumList(String str) {
     str = str.trim();
-    str = str.length() == 1?str:str.substring(1, str.length()-1).replace(" ", "");
+    str = IC.isNum(str)?str:str.substring(1, str.length()-1).replace(" ", "");
     if (str.length() == 0) return new int[0];
     String[] nums = str.split(",");
     int[] out = new int[nums.length];

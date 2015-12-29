@@ -14,10 +14,10 @@ public class Main {
     ListNodes listUtil = new ListNodes();
     Solution sol = new Solution();
     
-    ArrayList<Integer> ins = ih.getDataAsNum();
+    ArrayList<Integer> inInt = ih.getDataAsInt();
 
-    for (int i = 0; i < ins.size(); i++) {
-      int n = ins.get(i);
+    for (int i = 0; i < inInt.size(); i++) {
+      int n = inInt.get(i);
       System.out.println(sol.addDigits(n));
 
     }

@@ -13,11 +13,11 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<int[]> inn = ih.getDataAsNumList();
+    ArrayList<int[]> inIntList = ih.getDataAsIntList();
 
-    for (int i = 0; i < inn.size()/2; i++) {
-      int[] arr1 = inn.get(2*i);
-      int[] arr2 = inn.get(2*i + 1);
+    for (int i = 0; i < inIntList.size()/2; i++) {
+      int[] arr1 = inIntList.get(2*i);
+      int[] arr2 = inIntList.get(2*i + 1);
       System.out.println(sol.findMedianSortedArrays(arr1, arr2));
     }
   }

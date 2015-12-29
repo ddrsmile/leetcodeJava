@@ -13,9 +13,9 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<int[]> inn = ih.getDataAsNumList();
-    for (int i = 0; i < inn.size(); i++) {
-      int n = inn.get(i)[0];
+    ArrayList<int[]> inIntList = ih.getDataAsIntList();
+    for (int i = 0; i < inIntList.size(); i++) {
+      int n = inIntList.get(i)[0];
       System.out.println(sol.isPalindrome(n));
     }
   }

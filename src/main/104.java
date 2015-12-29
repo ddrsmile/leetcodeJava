@@ -17,7 +17,11 @@ public class Main {
     ArrayList<String> ins = ih.getDataAsStr();
 
     for (int i = 0; i < ins.size(); i++) {
-      TreeNode rootIn = trees.getBT(ins.get(i));
+      String nodes = ins.get(i);
+      if (nodes.charAt(0) == '[' && nodes.charAt(nodes.length() - 1) == ']') {
+        nodes = nodes.substring(1, nodes.length() - 1);
+      }
+      TreeNode rootIn = trees.getBT(nodes);
       System.out.println(sol.maxDepth(rootIn));
     }
   }

@@ -14,10 +14,10 @@ public class Main {
     ListNodes listUtil = new ListNodes();
     Solution sol = new Solution();
     
-    ArrayList<int[]> innL = ih.getDataAsNumList();
+    ArrayList<int[]> inIntList = ih.getDataAsIntList();
 
-    for (int i = 0; i < innL.size(); i++) {
-      ListNode head = listUtil.getList(innL.get(i));
+    for (int i = 0; i < inIntList.size(); i++) {
+      ListNode head = listUtil.getList(inIntList.get(i));
       ListNode headOut = sol.swapPairs(head);
       if (headOut == null) {
         System.out.println("null");

@@ -14,12 +14,12 @@ public class Main {
     ListNodes listUtil = new ListNodes();
     Solution sol = new Solution();
     
-    ArrayList<int[]> ins = ih.getDataAsNumList();
+    ArrayList<int[]> inIntList = ih.getDataAsIntList();
 
-    for (int i = 0; i < ins.size()/2; i++) {
-      ListNode head = listUtil.getList(ins.get(2*i));
+    for (int i = 0; i < inIntList.size()/2; i++) {
+      ListNode head = listUtil.getList(inIntList.get(2*i));
       ListNode node = head;
-      int n = ins.get(2*i + 1)[0];
+      int n = inIntList.get(2*i + 1)[0];
       for (int j = 1; j < n; j++) {
         node = node.next;
       }

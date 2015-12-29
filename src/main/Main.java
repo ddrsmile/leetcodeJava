@@ -13,11 +13,10 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<int[]> innL = ih.getDataAsNumList();
-    for (int i = 0; i < innL.size()/2; i++) {
-      int[] coins = innL.get(2*i);
-      int amount = innL.get(2*i + 1)[0];
-      System.out.println(sol.coinChange(coins, amount));
+    ArrayList<int[]> inIntList = ih.getDataAsIntList();
+    for (int i = 0; i < inIntList.size(); i++) {
+      int n = inIntList.get(i)[0];
+      System.out.println(sol.isPalindrome(n));
     }
   }
 }

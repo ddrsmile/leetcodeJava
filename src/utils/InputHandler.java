@@ -6,12 +6,25 @@ import java.io.FileReader;
 import utils.InputCheck;
 
 public class InputHandler {
+  // Input path String
   String inputPath;
-  ArrayList<Integer> inn;
-  ArrayList<int[]> innL;
-  ArrayList<ArrayList<int[]>> innLs;
-  ArrayList<String> ins;
-  ArrayList<String[]> insL;
+
+  // Integer container
+  ArrayList<Integer> inInt;
+  ArrayList<int[]> inIntList;
+  ArrayList<ArrayList<int[]>> inIntLists;
+  
+  // double Float container 
+  ArrayList<Double> inDouble;
+  ArrayList<double[]> inDoubleList;
+  ArrayList<ArrayList<double[]>> inDoubleLists;
+
+  // String container
+  ArrayList<String> inStr;
+  ArrayList<String[]> inStrList;
+  ArrayList<ArrayList<String[]>> inStrLists;
+
+  // input file reader
   BufferedReader br;
   
   // check whether input string is numeric or not
@@ -19,48 +32,93 @@ public class InputHandler {
 
   public InputHandler(String inputPath) {
     this.inputPath = inputPath;
-    inn = null;
-    ins = null;
+    inInt = null;
+    inIntList = null;
+    inIntLists = null;
+    inDouble = null;
+    inDoubleList = null;
+    inDoubleLists = null;
+    inStr = null;
+    inStrList = null;
+    inStrLists = null;
     IC = new InputCheck();
   }
 
-  private int getNum(String str) {
-    str = str.replaceAll("[^0-9]","");
-    if (IC.isNum(str)) {
-      return Integer.parseInt(str);
-    } else {
-      System.out.println("The input was not Integer, Please check the input file!!!");
-      return 0;
-    }
+  private int getInt(String str) {
+    str = IC.isInt(str);
+    return Integer.parseInt(str);
   }
-
-  private int[] getNumList(String str) {
-    str = str.trim();
-    str = IC.isNum(str)?str:str.substring(1, str.length()-1).replace(" ", "");
+  
+  private double getDouble(String str) {
+    str = IC.isDouble(str);
+    return Double.parseDouble(str);
+  }
+  
+  private int[] getIntList(String str) {
+    str = IC.isIntList(str);
+    if (str.charAt(0) != '[' || str.charAt(str.length() - 1) != ']') {
+      int[] tmp = {Integer.parseInt(str)};
+      return tmp;
+    }
+    str = str.substring(1, str.length()-1);
     if (str.length() == 0) return new int[0];
-    String[] nums = str.split(",");
-    int[] out = new int[nums.length];
-    for (int i = 0; i < nums.length; i++) {
-      out[i] = Integer.parseInt(nums[i]);
+    String[] ints = str.split(",");
+    int[] out = new int[ints.length];
+    for (int i = 0; i < ints.length; i++) {
+      out[i] = Integer.parseInt(ints[i]);
     }
     return out;
   }
   
-  private ArrayList<int[]> getListOfNumList(String str) {
-    str = str.trim();
-    str = str.length() == 1?str:str.substring(1, str.length()-1).replace(" ", "");
-    if (str.length() == 0) return new ArrayList<int[]>();
-    String[] numLists = str.split("],");
-    
-    for (int i = 0; i < numLists.length - 1; i++) {
-      numLists[i] = numLists[i] + "]";
+  private double[] getDoubleList(String str) {
+    str = IC.isDoubleList(str);
+    if (str.charAt(0) != '[' || str.charAt(str.length() - 1) != ']') {
+      double[] tmp = {Double.parseDouble(str)};
+      return tmp;
     }
+    str = str.substring(1, str.length()-1);
+    String[] doubles = str.split(",");
+    double[] out = new double[doubles.length];
+    for (int i = 0; i < doubles.length; i++) {
+      out[i] = Double.parseDouble(doubles[i]);
+    }
+    return out;
+  }
 
-    ArrayList<int[]> innL = new ArrayList<int[]>();
-    for (int i = 0; i < numLists.length; i++) {
-      innL.add(getNumList(numLists[i]));
+  private ArrayList<int[]> getIntLists(String str) {
+    str = IC.isIntLists(str);
+    if (str.charAt(0) != '[' || str.charAt(str.length() - 1) != ']') {
+      int[] tmp = {Integer.parseInt(str)};
+      ArrayList<int[]> intList = new ArrayList<int[]>();
+      intList.add(tmp);
+      return intList;
     }
-    return innL;
+    str = str.substring(1, str.length() - 1);
+    str = str.replace("],[", "], [");
+    String[] ints = str.split(", ");
+    ArrayList<int[]> intLists = new ArrayList<int[]>();
+    for (int i = 0; i < ints.length; i++) {
+      intLists.add(getIntList(ints[i]));
+    }
+    return intLists;
+  }
+
+  private ArrayList<double[]> getDoubleLists(String str) {
+    str = IC.isDoubleLists(str);
+    if (str.charAt(0) != '[' || str.charAt(str.length() - 1) != ']') {
+      double[] tmp = {Double.parseDouble(str)};
+      ArrayList<double[]> doubleList = new ArrayList<double[]>();
+      doubleList.add(tmp);
+      return doubleList;
+    }
+    str = str.substring(1, str.length() - 1);
+    str = str.replace("],[", "], [");
+    String[] doubles = str.split(", ");
+    ArrayList<double[]> doubleLists = new ArrayList<double[]>();
+    for (int i = 0; i < doubles.length; i++) {
+      doubleLists.add(getDoubleList(doubles[i]));
+    }
+    return doubleLists;
   }
 
   private String getStr(String str) {
@@ -79,58 +137,91 @@ public class InputHandler {
     return out;
   }
   
-  public ArrayList<Integer> getDataAsNum() throws IOException {
-    if (inputPath == null || inputPath.length() == 0) return inn;
-    inn = new ArrayList<Integer>();
+  public ArrayList<Integer> getDataAsInt() throws IOException {
+    if (inputPath == null || inputPath.length() == 0) return inInt;
+    inInt = new ArrayList<Integer>();
     br = new BufferedReader(new FileReader(inputPath));
     String in = null;
     while ((in = br.readLine()) != null) {
-      inn.add(getNum(in));
+      inInt.add(getInt(in));
     }
-    return inn;
+    return inInt;
+  }
+  
+  public ArrayList<Double> getDataAsDouble() throws IOException {
+    if (inputPath == null || inputPath.length() == 0) return inDouble;
+    inDouble = new ArrayList<Double>();
+    br = new BufferedReader(new FileReader(inputPath));
+    String in = null;
+    while ((in = br.readLine()) != null) {
+      inDouble.add(getDouble(in));
+    }
+    return inDouble;
   }
 
-  public ArrayList<int[]> getDataAsNumList() throws IOException {
-    if (inputPath == null || inputPath.length() == 0) return innL;
-    innL = new ArrayList<int[]>();
+  public ArrayList<int[]> getDataAsIntList() throws IOException {
+    if (inputPath == null || inputPath.length() == 0) return inIntList;
+    inIntList = new ArrayList<int[]>();
     br = new BufferedReader(new FileReader(inputPath));
     String in = null;
     while ((in = br.readLine()) != null) {
-      innL.add(getNumList(in));
+      inIntList.add(getIntList(in));
     }
-    return innL;
+    return inIntList;
+  }
+  
+  public ArrayList<double[]> getDataAsDoubleList() throws IOException {
+    if (inputPath == null || inputPath.length() == 0) return inDoubleList;
+    inDoubleList = new ArrayList<double[]>();
+    br = new BufferedReader(new FileReader(inputPath));
+    String in = null;
+    while ((in = br.readLine()) != null) {
+      inDoubleList.add(getDoubleList(in));
+    }
+    return inDoubleList;
   }
 
-  public ArrayList<ArrayList<int[]>> getDataAsListNumList() throws IOException {
-    if (inputPath == null || inputPath.length() == 0) return innLs;
-    innLs = new ArrayList<ArrayList<int[]>>();
+  public ArrayList<ArrayList<int[]>> getDataAsIntLists() throws IOException {
+    if (inputPath == null || inputPath.length() == 0) return inIntLists;
+    inIntLists = new ArrayList<ArrayList<int[]>>();
     br = new BufferedReader(new FileReader(inputPath));
     String in = null;
     while ((in = br.readLine()) != null) {
-      innLs.add(getListOfNumList(in));
+      inIntLists.add(getIntLists(in));
     }
-    return innLs;
+    return inIntLists;
+  }
+  
+  public ArrayList<ArrayList<double[]>> getDataAsDoubleLists() throws IOException {
+    if (inputPath == null || inputPath.length() == 0) return inDoubleLists;
+    inDoubleLists = new ArrayList<ArrayList<double[]>>();
+    br = new BufferedReader(new FileReader(inputPath));
+    String in = null;
+    while ((in = br.readLine()) != null) {
+      inDoubleLists.add(getDoubleLists(in));
+    }
+    return inDoubleLists;
   }
 
   public ArrayList<String> getDataAsStr() throws IOException {
-    if (inputPath == null || inputPath.length() == 0) return ins;
-    ins = new ArrayList<String>();
+    if (inputPath == null || inputPath.length() == 0) return inStr;
+    inStr = new ArrayList<String>();
     br = new BufferedReader(new FileReader(inputPath));
     String in = null;
     while ((in = br.readLine()) != null) {
-      ins.add(getStr(in));
+      inStr.add(getStr(in));
     }
-    return ins;
+    return inStr;
   }
 
   public ArrayList<String[]> getDataAsStrList() throws IOException {
-    if (inputPath == null || inputPath.length() == 0) return insL;
-    insL = new ArrayList<String[]>();
+    if (inputPath == null || inputPath.length() == 0) return inStrList;
+    inStrList = new ArrayList<String[]>();
     br = new BufferedReader(new FileReader(inputPath));
     String in = null;
     while ((in = br.readLine()) != null) {
-      insL.add(getStrList(in));
+      inStrList.add(getStrList(in));
     }
-    return insL;
+    return inStrList;
   }
 }

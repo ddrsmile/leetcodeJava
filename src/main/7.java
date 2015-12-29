@@ -13,9 +13,9 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<Integer> inn = ih.getDataAsNum();
-    for (int i = 0; i < inn.size(); i++) {
-      int n = inn.get(i);
+    ArrayList<Integer> inInt = ih.getDataAsInt();
+    for (int i = 0; i < inInt.size(); i++) {
+      int n = inInt.get(i);
       System.out.println(sol.reverse(n));
     }
   }

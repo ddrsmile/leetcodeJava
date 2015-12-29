@@ -13,9 +13,9 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<int[]> inn = ih.getDataAsNumList();
-    for (int i = 0; i < inn.size(); i++) {
-      int[] height = inn.get(i);
+    ArrayList<int[]> inIntList = ih.getDataAsIntList();
+    for (int i = 0; i < inIntList.size(); i++) {
+      int[] height = inIntList.get(i);
       System.out.println(sol.maxArea(height));
     }
   }

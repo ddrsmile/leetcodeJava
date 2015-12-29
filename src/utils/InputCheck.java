@@ -1,23 +1,105 @@
 package utils;
 
 public class InputCheck{
+    
+  private String intPattern;
+  private String doublePattern;
+  private String intListPattern;
+  private String doubleListPattern;
+  private String intListsPattern;
+  private String doubleListsPattern;
+
+  public InputCheck() {
+    intPattern = "-?\\d+";
+    doublePattern = "-?\\d+(\\.\\d+)?";
+    intListPattern = "\\[(-?\\d+,)*(-?\\d+)?\\]";
+    doubleListPattern = "\\[(-?\\d+(\\.\\d+)?,)*(-?\\d+(\\.\\d+)?)?\\]";
+    intListsPattern = "\\[(\\[(-?\\d+,)*(-?\\d+)?\\],)*(\\[(-?\\d+,)*(-?\\d+)?\\])?\\]";
+    doubleListsPattern = "\\[(\\[(-?\\d+(\\.\\d+)?,)*(-?\\d+(\\.\\d+)?)?\\],)*(\\[(-?\\d+(\\.\\d+)?,)*(-?\\d+(\\.\\d+)?)?\\])?\\]";
+  }
+  public String isInt(String s) {
+    String str = s.replaceAll("\\s", "");
+    try {
+      if (!str.matches(intPattern)) {
+        throw new Exception();
+      }
+    } catch (Exception e) {
+      System.out.println("Integer Input Error!!");
+      System.out.println(s);
+      System.exit(0);
+    }
+    return str;
+  }
   
-  public InputCheck() {}
-  
-  public boolean isNum(String s) {
-    return s.matches("-?\\d+(\\.\\d+)?");
+  public String isDouble(String s) {
+    String str = s.replaceAll("\\s", "");
+    try {
+      if (!str.matches(doublePattern)) {
+        throw new Exception();
+      }
+    } catch (Exception e) {
+      System.out.println("double Float Input Error!!");
+      System.out.println(s);
+      System.exit(0);
+    }
+    return str;
   }
 
-  public boolean isNumList(String s) {
-    s = s.trim();
-    if (s.charAt(0) != '[' || s.charAt(s.length() - 1) != ']') return false;
-    s = s.replace("[", "").replace("]", "");
-    s = s.trim();
-    if (s.length() == 0) return true;
-    String[] ss = s.split(",");
-    for (String str:ss) {
-      if (!isNum(str.trim())) return false;
+  public String isIntList(String s) {
+    String str = s.replaceAll("\\s", "");
+    try {
+      if (!str.matches(intPattern) && !str.matches(intListPattern)) {
+        throw new Exception();
+      }
+    } catch (Exception e) {
+      System.out.println("Integer List Input Error!!");
+      System.out.println(s);
+      System.exit(0);
     }
-    return true;
+    return str;
+  }
+
+  public String isDoubleList(String s) {
+    String str = s.replaceAll("\\s", "");
+    try {
+      if (!str.matches(doublePattern) && !str.matches(doubleListPattern)) {
+        throw new Exception();
+      }
+    } catch (Exception e) {
+      System.out.println("double Float List Input Error!!");
+      System.out.println(s);
+      System.exit(0);
+    }
+    return str;
+  }
+
+  public String isIntLists(String s) {
+    String str = s.replaceAll("\\s", "");
+    try {
+      if (!str.matches(intPattern) && !str.matches(intListsPattern)) {
+        throw new Exception();
+      }
+    } catch (Exception e) {
+      System.out.println("List of Integer List input Error!!");
+      System.out.println(s);
+      System.exit(0);
+    }
+    return str;
+  }
+
+  public String isDoubleLists(String s) {
+    String str = s.replaceAll("\\s", "");
+    try {
+      if (!str.matches(doublePattern) && !str.matches(doubleListsPattern)) {
+        return str;
+      } else {
+        throw new Exception();
+      }
+    } catch (Exception e) {
+      System.out.println("List of double Float List input Error!!");
+      System.out.println(s);
+      System.exit(0);
+    }
+    return str;
   }
 }

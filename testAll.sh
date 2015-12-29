@@ -10,7 +10,7 @@ do
     continue
   fi
   echo Run $ff Problem
-  ./setEnv_travis.sh $ff
+  ./run_travis.sh $ff
   echo done
   echo
   let cnt=cnt+1

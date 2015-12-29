@@ -17,6 +17,7 @@ do
   echo Run Problem $ff
   cp -f $BASE_SRC/main/$ff.java $BASE_SRC/main/Main.java
   cp -f $BASE_SRC/sols/$ff.java $BASE_SRC/sols/Solution.java
+  javac -d $BASE_BIN/ $BASE_SRC/sols/Solution.java
   javac -d $BASE_BIN/ $BASE_SRC/main/Main.java
   java main.Main $CURRENT_DIR/input/$ff.txt
   echo done

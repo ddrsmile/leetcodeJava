@@ -10,9 +10,9 @@ do
     continue
   fi
   echo Run $ff Problem
-  echo
   ./setEnv_travis.sh $ff
   echo done
+  echo
   let cnt=cnt+1
 done
 echo $cnt problems were run.

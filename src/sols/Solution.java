@@ -1,16 +1,19 @@
 package sols;
+import java.util.*;
 
 public class Solution {
-  public boolean isPalindrome(int x) {
-    if (x < 0) return false;
-    if (x < 10) return true;
-    int max = Integer.MAX_VALUE;
-    int tmp = x;
-    int res = 0;
-    for (; tmp != 0; tmp /= 10) {
-      if (res != 0 && max/res < 10) return false;
-      res = res*10 + tmp%10;
+  public int[] twoSum(int[] nums, int target) {
+    int[] res = {-1, -1};
+    Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+    for (int i = 0; i < nums.length; i++) {
+      if (map.containsKey(target - nums[i])) {
+        res[0] = map.get(target - nums[i]);
+        res[1] = i + 1;
+        break;
+      } else {
+        map.put(nums[i], i + 1);
+      }
     }
-    return res == x;
+    return res;
   }
 }

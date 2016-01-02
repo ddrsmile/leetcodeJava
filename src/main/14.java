@@ -13,9 +13,9 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<String[]> ins = ih.getDataAsStrList();
-    for (int i = 0; i < ins.size(); i++) {
-      String[] strs = ins.get(i);
+    ArrayList<String[]> inStr = ih.getDataAsStrList();
+    for (int i = 0; i < inStr.size(); i++) {
+      String[] strs = inStr.get(i);
       System.out.println(sol.longestCommonPrefix(strs));
     }
   }

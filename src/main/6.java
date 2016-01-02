@@ -13,10 +13,10 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<String> ins = ih.getDataAsStr();
-    for (int i = 0; i < ins.size()/2; i++) {
-      String s = ins.get(2*i);
-      int nRow = Integer.parseInt(ins.get(2*i + 1));
+    ArrayList<String> inStr = ih.getDataAsStr();
+    for (int i = 0; i < inStr.size()/2; i++) {
+      String s = inStr.get(2*i);
+      int nRow = Integer.parseInt(inStr.get(2*i + 1));
       System.out.println(sol.convert(s, nRow));
     }
   }

@@ -14,10 +14,10 @@ public class Main {
     Trees trees = new Trees();
     Solution sol = new Solution();
     
-    ArrayList<String> ins = ih.getDataAsStr();
+    ArrayList<String> inStr = ih.getDataAsStr();
 
-    for (int i = 0; i < ins.size(); i++) {
-      String nodes = ins.get(i);
+    for (int i = 0; i < inStr.size(); i++) {
+      String nodes = inStr.get(i);
       if (nodes.charAt(0) == '[' && nodes.charAt(nodes.length() - 1) == ']') {
         nodes = nodes.substring(1, nodes.length() - 1);
       }

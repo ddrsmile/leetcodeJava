@@ -14,10 +14,10 @@ public class Main {
     ListNodes listUtil = new ListNodes();
     Solution sol = new Solution();
     
-    ArrayList<String> ins = ih.getDataAsStr();
+    ArrayList<String> inStr = ih.getDataAsStr();
 
-    for (int i = 0; i < ins.size(); i++) {
-      String s = ins.get(i);
+    for (int i = 0; i < inStr.size(); i++) {
+      String s = inStr.get(i);
       System.out.println(sol.lengthOfLongestSubstring(s));
     }
   }

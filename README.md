@@ -126,7 +126,9 @@ int array:
 [1,3,4]
 ```  
 string array:  
-to be implement....
+```txt
+["string1","string2","string3"]
+```  
 
 To create the listNode, use int array as input.  
 ```txt

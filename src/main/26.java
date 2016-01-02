@@ -16,8 +16,9 @@ public class Main {
     ArrayList<int[]> inIntList = ih.getDataAsIntList();
     for (int i = 0; i < inIntList.size(); i++) {
       int[] nums = inIntList.get(i);
-      sol.nextPermutation(nums);
-      System.out.println(Arrays.toString(nums));
+      int len = sol.removeDuplicates(nums);
+      int[] res = Arrays.copyOfRange(nums, 0, len);
+      System.out.println(Arrays.toString(res));
     }
   }
 }

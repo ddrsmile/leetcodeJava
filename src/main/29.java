@@ -13,11 +13,11 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<int[]> inIntList = ih.getDataAsIntList();
-    for (int i = 0; i < inIntList.size(); i++) {
-      int[] nums = inIntList.get(i);
-      sol.nextPermutation(nums);
-      System.out.println(Arrays.toString(nums));
+    ArrayList<Integer> inInt = ih.getDataAsInt();
+    for (int i = 0; i < inInt.size()/2; i++) {
+      int dividend = inInt.get(2*i);
+      int divisor = inInt.get(2*i + 1);
+      System.out.println(sol.divide(dividend, divisor));
     }
   }
 }

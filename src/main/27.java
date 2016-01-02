@@ -14,10 +14,12 @@ public class Main {
     Solution sol = new Solution();
     
     ArrayList<int[]> inIntList = ih.getDataAsIntList();
-    for (int i = 0; i < inIntList.size(); i++) {
-      int[] nums = inIntList.get(i);
-      sol.nextPermutation(nums);
-      System.out.println(Arrays.toString(nums));
+    for (int i = 0; i < inIntList.size()/2; i++) {
+      int[] nums = inIntList.get(2*i);
+      int val = inIntList.get(2*i + 1)[0];
+      int len = sol.removeDuplicates(nums, val);
+      int[] res = Arrays.copyOfRange(nums, 0, len);
+      System.out.println(Arrays.toString(res));
     }
   }
 }

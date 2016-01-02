@@ -11,13 +11,15 @@ import java.util.*;
 public class Main {
   public static void main(String[] args) throws IOException {
     InputHandler ih = new InputHandler(args[0]);
+    ListNodes listUtil = new ListNodes();
     Solution sol = new Solution();
     
-    ArrayList<int[]> inIntList = ih.getDataAsIntList();
-    for (int i = 0; i < inIntList.size(); i++) {
-      int[] nums = inIntList.get(i);
-      sol.nextPermutation(nums);
-      System.out.println(Arrays.toString(nums));
+    ArrayList<String> inStr = ih.getDataAsStr();
+
+    for (int i = 0; i < inStr.size()/2; i++) {
+      String haystack = inStr.get(2*i);
+      String needle = inStr.get(2*i + 1);
+      System.out.println(sol.strStr(haystack, needle));
     }
   }
 }

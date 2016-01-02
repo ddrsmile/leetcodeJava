@@ -53,10 +53,10 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
 
-    ArrayList<int[]> inn = ih.getDataAsNum();
-    for (int i = 0; i < inn.size()/2; i++) {
-      int[] nums = inn.get(2*i);
-      int target = inn.get(2*i + 1)[0];
+    ArrayList<int[]> inIntList = ih.getDataAsIntList();
+    for (int i = 0; i < inIntList.size()/2; i++) {
+      int[] nums = inIntList.get(2*i);
+      int target = inIntList.get(2*i + 1)[0];
       int[] res = sol.twoSum(nums, target);
       System.out.println(Arrays.toString(res));
     }
@@ -66,11 +66,38 @@ public class Main {
 put the file into "currentdir/src/main/"  
 ##### InputHandler
 InputHandler class receives String variable which contents the path of input files to create the object.
+  
+Integer  
+getDataAsInt() returns ArrayList<Integer>  
+getDataAsIntList() returns ArrayList<int[]>  
+getDataAsIntLists() returns ArrayList<ArrayList<int[]>>  
+  
+double Float  
+getDataAsDouble() returns ArrayList<Double>  
+getDataAsDoubleList() returns ArrayList<double[]>  
+getDataAsDoubleLists() returns ArrayList<ArrayList<double[]>>  
+  
+String  
+getDataAsStr() returns ArrayList<String>  
+getDataAsStrList() returns ArrayList<String[]>  
+  
+##### InputCheck  
+InputCheck class is used by InputHandler.  
+The program will be stopped and the inappropriate contents will be shown when it is detected.  
+The follows are the check points:  
+1. Integer. ``` (1, 2, 34, -4, -62, ...)```  
+2. Integer list. ``` ([1, 2, 34, -4], [34, -4, -62], [0, 3, 19], ...) ```  
+3. The List of the Integer lists. ``` ([[1, 2, 34, -4], [34, -4, -62], [0, 3, 19]], ...) ```    
+4. double Float. ``` (1.2, 32.2, 0.9, -5.2, -12.2, ...) ```  
+5. double Float list. ``` ([1.2, 32.2, 0.9], [0.9, -5.2, -12.2], [0.0, 2.98, -84.234], ...) ```  
+6. The List of the double Float lists. ``` ([[1.2, 32.2, 0.9], [0.9, -5.2, -12.2], [0.0, 2.98, -84.234]], ...) ```  
 
-To get the input data, one is getDataAsNum() and the other one is getDataAsString().
-Both mehtods return the data in ArrayList.  
-getDataAsNum() returns ArrayList<int[]>  
-getDataAsString() returns ArrayList<String>  
+##### P.S.
+1) Integer or double Float is valided for the check of the list and the list of the lists.  
+2) [] is valided for the check of the list.  
+3) [], [[]] are valided for the check of the list of the lists.  
+
+
 ### 3. prepare the input file
 write down your input contents in the txt file, and then name the file with the # of problem.  
 one input (one arguement) one line.  

@@ -13,10 +13,11 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<Integer> inInt = ih.getDataAsInt();
-    for (int i = 0; i < inInt.size(); i++) {
-      int num = inInt.get(i);
-      System.out.println(sol.countAndSay(num));
+    ArrayList<int[]> inIntList = ih.getDataAsIntList();
+    for (int i = 0; i < inIntList.size()/2; i++) {
+      int[] nums = inIntList.get(2*i);
+      int target = inIntList.get(2*i + 1)[0];
+      System.out.println(sol.searchInsert(nums, target));
     }
   }
 }

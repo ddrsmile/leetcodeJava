@@ -17,7 +17,7 @@ public class Main {
     for (int i = 0; i < inIntList.size()/2; i++) {
       int[] nums = inIntList.get(2*i);
       int target = inIntList.get(2*i + 1)[0];
-      List<List<Integer>> res = sol.combinationSum2(nums, target);
+      List<List<Integer>> res = sol.combinationSum(nums, target);
       System.out.println(res.toString());
     }
   }

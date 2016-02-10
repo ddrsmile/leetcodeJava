@@ -68,18 +68,26 @@ put the file into "currentdir/src/main/"
 InputHandler class receives String variable which contents the path of input files to create the object.
   
 Integer  
-getDataAsInt() returns ArrayList<Integer>  
-getDataAsIntList() returns ArrayList<int[]>  
-getDataAsIntLists() returns ArrayList<ArrayList<int[]>>  
+```
+getDataAsInt() returns ArrayList<Integer>
+getDataAsIntList() returns ArrayList<int[]>
+getDataAsIntLists() returns ArrayList<ArrayList<int[]>>
+getDataAsIntMatrix() returns ArrayList<int[][]>
+```  
   
 double Float  
-getDataAsDouble() returns ArrayList<Double>  
-getDataAsDoubleList() returns ArrayList<double[]>  
-getDataAsDoubleLists() returns ArrayList<ArrayList<double[]>>  
+```
+getDataAsDouble() returns ArrayList<Double>
+getDataAsDoubleList() returns ArrayList<double[]>
+getDataAsDoubleLists() returns ArrayList<ArrayList<double[]>>
+getDataAsIntMatrix() returns ArrayList<int[][]>
+```  
   
 String  
-getDataAsStr() returns ArrayList<String>  
-getDataAsStrList() returns ArrayList<String[]>  
+```
+getDataAsStr() returns ArrayList<String>
+getDataAsStrList() returns ArrayList<String[]>
+```  
   
 ##### InputCheck  
 InputCheck class is used by InputHandler.  
@@ -112,20 +120,39 @@ For example,
 9
 ```
 ##### some simple rule
-single number:  
+single int:  
 ```txt
 1  
+-2  
+3
+```  
+int list:
+```txt
+[1,3,4]
+```  
+int list of the lists:
+```txt
+[[1,2,3],[4,5,6],[7,8,9]]
+```  
+single double float:  
+```txt
 1.3  
+-0.2  
+3.45
+```  
+double float list:
+```txt
+[1.2,0.31,4.28]
+```  
+double float list of the lists:
+```txt
+[[1.2,0.2,3.4],[5.4,5.02,8.46],[0.27,8.88,9.13]]
 ```  
 String:  
 ```txt
 "string"
 ```  
-int array:
-```txt
-[1,3,4]
-```  
-string array:  
+string list:  
 ```txt
 ["string1","string2","string3"]
 ```  

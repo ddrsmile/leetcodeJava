@@ -13,16 +13,19 @@ public class InputHandler {
   ArrayList<Integer> inInt;
   ArrayList<int[]> inIntList;
   ArrayList<ArrayList<int[]>> inIntLists;
+  ArrayList<int[][]> inIntMatrix;
   
   // double Float container 
   ArrayList<Double> inDouble;
   ArrayList<double[]> inDoubleList;
   ArrayList<ArrayList<double[]>> inDoubleLists;
+  ArrayList<double[][]> inDoubleMatrix;
 
   // String container
   ArrayList<String> inStr;
   ArrayList<String[]> inStrList;
   ArrayList<ArrayList<String[]>> inStrLists;
+  ArrayList<String[][]> inStrMatrix;
 
   // input file reader
   BufferedReader br;
@@ -35,12 +38,15 @@ public class InputHandler {
     inInt = null;
     inIntList = null;
     inIntLists = null;
+    inIntMatrix = null;
     inDouble = null;
     inDoubleList = null;
     inDoubleLists = null;
+    inDoubleMatrix = null;
     inStr = null;
     inStrList = null;
     inStrLists = null;
+    inStrMatrix = null;
     IC = new InputCheck();
   }
 
@@ -148,17 +154,6 @@ public class InputHandler {
     return inInt;
   }
   
-  public ArrayList<Double> getDataAsDouble() throws IOException {
-    if (inputPath == null || inputPath.length() == 0) return inDouble;
-    inDouble = new ArrayList<Double>();
-    br = new BufferedReader(new FileReader(inputPath));
-    String in = null;
-    while ((in = br.readLine()) != null) {
-      inDouble.add(getDouble(in));
-    }
-    return inDouble;
-  }
-
   public ArrayList<int[]> getDataAsIntList() throws IOException {
     if (inputPath == null || inputPath.length() == 0) return inIntList;
     inIntList = new ArrayList<int[]>();
@@ -168,17 +163,6 @@ public class InputHandler {
       inIntList.add(getIntList(in));
     }
     return inIntList;
-  }
-  
-  public ArrayList<double[]> getDataAsDoubleList() throws IOException {
-    if (inputPath == null || inputPath.length() == 0) return inDoubleList;
-    inDoubleList = new ArrayList<double[]>();
-    br = new BufferedReader(new FileReader(inputPath));
-    String in = null;
-    while ((in = br.readLine()) != null) {
-      inDoubleList.add(getDoubleList(in));
-    }
-    return inDoubleList;
   }
 
   public ArrayList<ArrayList<int[]>> getDataAsIntLists() throws IOException {
@@ -191,7 +175,48 @@ public class InputHandler {
     }
     return inIntLists;
   }
-  
+
+  public ArrayList<int[][]> getDataAsIntMatrix() throws IOException {
+    if (inputPath == null || inputPath.length() == 0) return inIntMatrix;
+    inIntMatrix = new ArrayList<int[][]>();
+    br = new BufferedReader(new FileReader(inputPath));
+    String in = null;
+    ArrayList<int[]> tmp;
+    int[][] matrix;
+    while ((in = br.readLine()) != null) {
+      tmp = getIntLists(in);
+      int n = tmp.size();
+      matrix = new int[n][];
+        for (int i = 0; i < n; i++) {
+          matrix[i] = tmp.get(i);
+        }
+      inIntMatrix.add(matrix);
+    }
+    return inIntMatrix;
+  }
+
+  public ArrayList<Double> getDataAsDouble() throws IOException {
+    if (inputPath == null || inputPath.length() == 0) return inDouble;
+    inDouble = new ArrayList<Double>();
+    br = new BufferedReader(new FileReader(inputPath));
+    String in = null;
+    while ((in = br.readLine()) != null) {
+      inDouble.add(getDouble(in));
+    }
+    return inDouble;
+  }
+ 
+  public ArrayList<double[]> getDataAsDoubleList() throws IOException {
+    if (inputPath == null || inputPath.length() == 0) return inDoubleList;
+    inDoubleList = new ArrayList<double[]>();
+    br = new BufferedReader(new FileReader(inputPath));
+    String in = null;
+    while ((in = br.readLine()) != null) {
+      inDoubleList.add(getDoubleList(in));
+    }
+    return inDoubleList;
+  }
+
   public ArrayList<ArrayList<double[]>> getDataAsDoubleLists() throws IOException {
     if (inputPath == null || inputPath.length() == 0) return inDoubleLists;
     inDoubleLists = new ArrayList<ArrayList<double[]>>();
@@ -201,6 +226,25 @@ public class InputHandler {
       inDoubleLists.add(getDoubleLists(in));
     }
     return inDoubleLists;
+  }
+
+  public ArrayList<double[][]> getDataAsDoubleMatrix() throws IOException {
+    if (inputPath == null || inputPath.length() == 0) return inDoubleMatrix;
+    inDoubleMatrix = new ArrayList<double[][]>();
+    br = new BufferedReader(new FileReader(inputPath));
+    String in = null;
+    ArrayList<double[]> tmp;
+    double[][] matrix;
+    while ((in = br.readLine()) != null) {
+      tmp = getDoubleLists(in);
+      int n = tmp.size();
+      matrix = new double[n][];
+      for (int i = 0; i < n; i++) {
+        matrix[i] = tmp.get(i);
+      }
+      inDoubleMatrix.add(matrix);
+    }
+    return inDoubleMatrix;
   }
 
   public ArrayList<String> getDataAsStr() throws IOException {

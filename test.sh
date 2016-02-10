@@ -20,7 +20,7 @@ if [ "$opt" = "all" ]; then
     problems+=("$ff")
   done
 else
-  problems=(39 40)
+  problems=(41 43 46 47 48 49 50)
 fi
 
 cnt=0

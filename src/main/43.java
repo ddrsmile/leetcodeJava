@@ -11,13 +11,15 @@ import java.util.*;
 public class Main {
   public static void main(String[] args) throws IOException {
     InputHandler ih = new InputHandler(args[0]);
+    ListNodes listUtil = new ListNodes();
     Solution sol = new Solution();
     
-    ArrayList<Double> inDouble = ih.getDataAsDouble();
-    for (int i = 0; i < inDouble.size()/2; i++) {
-      double x = inDouble.get(2*i);
-      int n = inDouble.get(2*i + 1).intValue();
-      System.out.println(sol.myPow(x, n));
+    ArrayList<String> inStr = ih.getDataAsStr();
+
+    for (int i = 0; i < inStr.size()/2; i++) {
+      String num1 = inStr.get(2*i);
+      String num2 = inStr.get(2*i + 1);
+      System.out.println(sol.multiply(num1, num2));
     }
   }
 }

@@ -13,11 +13,11 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<Double> inDouble = ih.getDataAsDouble();
-    for (int i = 0; i < inDouble.size()/2; i++) {
-      double x = inDouble.get(2*i);
-      int n = inDouble.get(2*i + 1).intValue();
-      System.out.println(sol.myPow(x, n));
+    ArrayList<int[]> inIntList = ih.getDataAsIntList();
+    for (int i = 0; i < inIntList.size(); i++) {
+      int[] nums = inIntList.get(i);
+      List<List<Integer>> res = sol.permute(nums);
+      System.out.println(res.toString());
     }
   }
 }

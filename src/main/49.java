@@ -13,11 +13,11 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<Double> inDouble = ih.getDataAsDouble();
-    for (int i = 0; i < inDouble.size()/2; i++) {
-      double x = inDouble.get(2*i);
-      int n = inDouble.get(2*i + 1).intValue();
-      System.out.println(sol.myPow(x, n));
+    ArrayList<String[]> inStr = ih.getDataAsStrList();
+    for (int i = 0; i < inStr.size(); i++) {
+      String[] strs = inStr.get(i);
+      List<List<String>> res = sol.groupAnagram(strs);
+      System.out.println(res.toString());
     }
   }
 }

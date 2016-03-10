@@ -100,6 +100,7 @@ public class InputHandler {
       return intList;
     }
     str = str.substring(1, str.length() - 1);
+    if (str.length() == 0) return new ArrayList<int[]>();
     str = str.replace("],[", "], [");
     String[] ints = str.split(", ");
     ArrayList<int[]> intLists = new ArrayList<int[]>();
@@ -118,6 +119,7 @@ public class InputHandler {
       return doubleList;
     }
     str = str.substring(1, str.length() - 1);
+    if (str.length() == 0) return new ArrayList<double[]>();
     str = str.replace("],[", "], [");
     String[] doubles = str.split(", ");
     ArrayList<double[]> doubleLists = new ArrayList<double[]>();

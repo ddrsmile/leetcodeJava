@@ -13,10 +13,10 @@ public class Main {
     InputHandler ih = new InputHandler(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<String> inStr = ih.getDataAsStr();
-    for (int i = 0; i < inStr.size(); i++) {
-      String s = inStr.get(i);
-      System.out.println(sol.lengthOfLastWord(s));
+    ArrayList<int[]> inIntList = ih.getDataAsIntList();
+    for (int i = 0; i < inIntList.size(); i++) {
+      int[] nums = inIntList.get(i);
+      System.out.println(sol.canJump(nums));
     }
   }
 }

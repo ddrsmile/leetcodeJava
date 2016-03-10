@@ -11,12 +11,15 @@ import java.util.*;
 public class Main {
   public static void main(String[] args) throws IOException {
     InputHandler ih = new InputHandler(args[0]);
+    ListNodes listUtil = new ListNodes();
     Solution sol = new Solution();
     
-    ArrayList<String> inStr = ih.getDataAsStr();
-    for (int i = 0; i < inStr.size(); i++) {
-      String s = inStr.get(i);
-      System.out.println(sol.lengthOfLastWord(s));
+    ArrayList<int[][]> inIntMatrix = ih.getDataAsIntMatrix();
+    int[][] matrix;
+    for (int i = 0; i < inIntMatrix.size(); i++) {
+      matrix = inIntMatrix.get(i);
+      List<Integer> res = sol.spiralOrder(matrix);
+      System.out.println(res.toString());
     }
   }
 }

@@ -1,2 +1,4 @@
 bin/*
 etc/
+src/main/Main.java
+src/sols/Solution.java

@@ -2,14 +2,13 @@
 opt=$1
 echo START TEH TESTS
 
-javac -d $BASE_BIN $BASE_SRC/objs/*.java
-javac -d $BASE_BIN $BASE_SRC/utils/*.java
+$ROOT_DIR/compile.sh 
 
-export MAIN_DIR=./src/main
+export MAIN_DIR=$SRC_DIR/main
 
 problems=()
 cnt=0
-if [ "$opt" = "all" ]; then
+if [ "$opt" = "all" ] || [ -z "$opt" ]; then
   for f in $MAIN_DIR/*.java
   do
     ff=${f##*/}
@@ -20,19 +19,20 @@ if [ "$opt" = "all" ]; then
     problems+=("$ff")
   done
 else
-  problems=(58 60)
+  problems=($opt)
 fi
 
 cnt=0
 for problem in ${problems[@]}
 do
   echo Run Problem $problem
-  cp -f $BASE_SRC/main/$problem.java $BASE_SRC/main/Main.java
-  cp -f $BASE_SRC/sols/$problem.java $BASE_SRC/sols/Solution.java
-  javac -d $BASE_BIN/ $BASE_SRC/sols/Solution.java
-  javac -d $BASE_BIN/ $BASE_SRC/main/Main.java
-  java main.Main $CURRENT_DIR/input/$problem.txt
-  echo done
+  cp -f $SRC_DIR/main/$problem.java $SRC_DIR/main/Main.java
+  cp -f $SRC_DIR/sols/$problem.java $SRC_DIR/sols/Solution.java
+  javac -d $BIN_DIR/ $SRC_DIR/sols/Solution.java
+  javac -d $BIN_DIR/ $SRC_DIR/main/Main.java
+  echo "========== RESULT =========="
+  java main.Main $INPUT_DIR/$problem.txt
+  echo "=========== DONE ==========="
   echo
   let cnt=cnt+1
 done

@@ -7,7 +7,7 @@ I did consult lots of resource on the internet.
 Mac OS X  
 
 ## Quick Start  
-### 1. source setEnv.sh  
+### 1. `source set_env.sh`
 ### 2. prepare the files  
 #### 2.1 solutions  
 write down the solution with the class Solution, and then name the file with the # of the problem.  
@@ -166,5 +166,7 @@ To create the binary tree, use String as input. Use # as the null node.
 [1,2,#,4,5]
 ```  
 
-### 4. ./run.sh # of problem.
-ex. ">./run.sh 1" will run the problem 1 and show the output.
+### 4. ./test.sh
+argument (optional) # of problem
+ex. ">./test.sh 1" will run the problem 1 and show the output.
+ex. ">./test.sh" or ">./test.sh all" will run all the problems and show the results

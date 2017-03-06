@@ -5,7 +5,7 @@ branches:
     - master
 
 before_script:
-  - source setEnv_travis.sh
+  - source set_env.sh
 
 script:
   - ./test.sh

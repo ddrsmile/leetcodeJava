@@ -1,4 +1,4 @@
-package utils;
+package utils.inputhandler;
 
 public class InputCheck{
     

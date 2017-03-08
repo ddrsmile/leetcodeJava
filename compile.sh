@@ -10,10 +10,6 @@ if [ -z "$ROOT_DIR" -o ! "$ROOT_DIR"=$(PWD)  ]; then
   exit 0
 fi
 
-if [ -z "$arg" ]; then
-  arg="all"
-fi
-
 #collect the item not compiled
 function check {
   DIR=$1
@@ -45,7 +41,7 @@ if [ "$arg" = "utils" ]; then
 fi
 
 
-if [ "$arg" = "all" ]; then
+if [ "$arg" = "all" ] || [ -z $arg ]; then
   ckobjs=$(check "objs")
   if [ ! $ckobjs = 0 ]; then
     javac -d $BIN_DIR $SRC_DIR/objs/*.java
@@ -54,7 +50,6 @@ if [ "$arg" = "all" ]; then
   if [ ! $ckutils = 0 ]; then
     javac -d $BIN_DIR $SRC_DIR/utils/*.java
   fi
-  javac -d $BIN_DIR $SRC_DIR/sols/Solution.java
   exit 0
 fi
 

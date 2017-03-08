@@ -1,6 +1,9 @@
 #!/bin/bash
 opt=$1
-echo START TEH TESTS
+
+rm -rf $BIN_DIR/*
+
+echo "START TESTING"
 
 $ROOT_DIR/compile.sh 
 

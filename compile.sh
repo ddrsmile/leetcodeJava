@@ -13,43 +13,51 @@ fi
 #collect the item not compiled
 function check {
   DIR=$1
-  i=0
-  for f in $SRC_DIR/$DIR/*.java
+  cnt=0
+  for fname in $(find $SRC_DIR/$DIR -name '*.java')
   do
-    ff=${f##*/}
-    ff=${ff%.*}
-    if [ ! -f $BIN_DIR/$DIR/$ff.class ]; then
-      i=$(($i+1))
+    fname="${fname/$SRC_DIR/$BIN_DIR}"
+    fname="${fname/.java/.class}"
+    if [ ! -f $fname ]; then
+      cnt=$(($cnt+1))
     fi
   done
-  echo $i
+  echo $cnt
 }
 
 
 if [ "$arg" = "objs" ]; then
-  javac -d $BIN_DIR $SRC_DIR/objs/*.java 
+  javac -d $BIN_DIR $(find $SRC_DIR/objs -name '*.java')
   exit 0
 fi
 
 if [ "$arg" = "utils" ]; then
   ckobjs=$(check "objs")
   if [ ! $ckobjs = 0 ]; then
-    javac -d $BIN_DIR $SRC_DIR/objs/*.java 
+    javac -d $BIN_DIR $(find $SRC_DIR/objs -name '*.java')
   fi
-  javac -d $BIN_DIR $SRC_DIR/utils/*.java
+  javac -d $BIN_DIR $(find $SRC_DIR/utils -name '*.java')
   exit 0
 fi
 
 
 if [ "$arg" = "all" ] || [ -z $arg ]; then
+  echo "compile both objs and utils..."
   ckobjs=$(check "objs")
   if [ ! $ckobjs = 0 ]; then
-    javac -d $BIN_DIR $SRC_DIR/objs/*.java
+    echo "compile objs..."
+    javac -d $BIN_DIR $(find $SRC_DIR/objs -name '*.java')
+  else
+    echo "objs have been compiled..."
   fi
   ckutils=$(check "utils")
   if [ ! $ckutils = 0 ]; then
-    javac -d $BIN_DIR $SRC_DIR/utils/*.java
+    echo "compile utils..."
+    javac -d $BIN_DIR $(find $SRC_DIR/utils -name '*.java')
+  else
+    echo "utils have been compiled..."
   fi
+  echo "completed..."
   exit 0
 fi
 

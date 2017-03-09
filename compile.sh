@@ -5,7 +5,7 @@ if [ "$arg" = 0 ]; then
   exit 0
 fi
 
-if [ -z "$ROOT_DIR" -o ! "$ROOT_DIR"=$(PWD)  ]; then
+if [ -z "$ROOT_DIR" -o ! "$ROOT_DIR"=`pwd`  ]; then
   echo "Please resouce set_env.sh"
   exit 0
 fi

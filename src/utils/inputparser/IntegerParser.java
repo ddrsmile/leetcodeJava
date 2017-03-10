@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class IntegerParser extends AbstractParser<Integer, int[]> implements IParser<Integer, int[]> {
+public class IntegerParser extends AbstractParser<Integer,int[]> implements IParser<Integer,int[]> {
     private InputCleaner inputCleaner;
     public IntegerParser() {
         super();

@@ -17,7 +17,7 @@ public class IntegerParser extends AbstractParser<Integer,int[]> implements IPar
 
     // protected methods
     @Override
-    protected Integer toNumber(String str) {
+    protected Integer toValue(String str) {
         str = inputCleaner.cleanInt(str);
         return Integer.getInteger(str);
     }
@@ -27,7 +27,7 @@ public class IntegerParser extends AbstractParser<Integer,int[]> implements IPar
         str = inputCleaner.cleanIntList(str);
         int[] output;
         if (str.charAt(0) != '[' && str.charAt(str.length() - 1) != ']') {
-            output = new int[]{Integer.parseInt(str)};
+            output = new int[]{toValue(str)};
             return output;
         }
         str = str.substring(1, str.length() - 1);
@@ -35,7 +35,7 @@ public class IntegerParser extends AbstractParser<Integer,int[]> implements IPar
         String[] input_contents = str.split(",");
         output = new int[input_contents.length];
         for (int i = 0; i < input_contents.length; i++) {
-            output[i] = Integer.parseInt(input_contents[i]);
+            output[i] = toValue(input_contents[i]);
         }
         return output;
     }
@@ -45,7 +45,7 @@ public class IntegerParser extends AbstractParser<Integer,int[]> implements IPar
         str = inputCleaner.cleanIntLists(str);
         ArrayList<int[]> output = new ArrayList<int[]>();
         if (str.charAt(0) != '[' && str.charAt(str.length() - 1) != ']') {
-            int[] tmp = {Integer.parseInt(str)};
+            int[] tmp = {toValue(str)};
             output.add(tmp);
             return output;
         }
@@ -60,7 +60,7 @@ public class IntegerParser extends AbstractParser<Integer,int[]> implements IPar
     }
   
     @Override
-    public ArrayList<Integer> parseDataAsNumber() {
+    public ArrayList<Integer> parseDataAsSingleValue() {
         ArrayList<Integer> output = new ArrayList<Integer>();
         if (inputPath == null || inputPath.length() == 0) {
             return output;
@@ -69,7 +69,7 @@ public class IntegerParser extends AbstractParser<Integer,int[]> implements IPar
             br = new BufferedReader(new FileReader(inputPath));
             String input_contents = null;
             while ((input_contents = br.readLine()) != null) {
-                output.add(toNumber(input_contents));
+                output.add(toValue(input_contents));
             }
         } catch (IOException ex) {
             System.out.print(ex);

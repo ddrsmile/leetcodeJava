@@ -17,7 +17,7 @@ public class DoubleParser extends AbstractParser<Double,double[]> implements IPa
 
     // protected methods
     @Override
-    protected Double toNumber(String str) {
+    protected Double toValue(String str) {
         str = inputCleaner.cleanDouble(str);
         return Double.parseDouble(str);
     }
@@ -27,7 +27,7 @@ public class DoubleParser extends AbstractParser<Double,double[]> implements IPa
         str = inputCleaner.cleanDoubleList(str);
         double[] output;
         if (str.charAt(0) != '[' && str.charAt(str.length() - 1) != ']') {
-            output = new double[]{Double.parseDouble(str)};
+            output = new double[]{toValue(str)};
             return output;
         }
         str = str.substring(1, str.length() - 1);
@@ -35,7 +35,7 @@ public class DoubleParser extends AbstractParser<Double,double[]> implements IPa
         String[] input_contents = str.split(",");
         output = new double[input_contents.length];
         for (int i = 0; i < input_contents.length; i++) {
-            output[i] = Double.parseDouble(input_contents[i]);
+            output[i] = toValue(input_contents[i]);
         }
         return output;
     }
@@ -45,7 +45,7 @@ public class DoubleParser extends AbstractParser<Double,double[]> implements IPa
         str = inputCleaner.cleanDoubleLists(str);
         ArrayList<double[]> output = new ArrayList<double[]>();
         if (str.charAt(0) != '[' && str.charAt(str.length() - 1) != ']') {
-            double[] tmp = {Double.parseDouble(str)};
+            double[] tmp = {toValue(str)};
             output.add(tmp);
             return output;
         }
@@ -60,7 +60,7 @@ public class DoubleParser extends AbstractParser<Double,double[]> implements IPa
     }
   
     @Override
-    public ArrayList<Double> parseDataAsNumber() {
+    public ArrayList<Double> parseDataAsSingleValue() {
         ArrayList<Double> output = new ArrayList<Double>();
         if (inputPath == null || inputPath.length() == 0) {
             return output;
@@ -69,7 +69,7 @@ public class DoubleParser extends AbstractParser<Double,double[]> implements IPa
             br = new BufferedReader(new FileReader(inputPath));
             String input_contents = null;
             while ((input_contents = br.readLine()) != null) {
-                output.add(toNumber(input_contents));
+                output.add(toValue(input_contents));
             }
         } catch (IOException ex) {
             System.out.print(ex);

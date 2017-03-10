@@ -4,36 +4,36 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class IntegerParser extends AbstractParser<Integer,int[]> implements IParser<Integer,int[]> {
+public class DoubleParser extends AbstractParser<Double,double[]> implements IParser<Double,double[]> {
     private InputCleaner inputCleaner;
-    public IntegerParser() {
+    public DoubleParser() {
         super();
         inputCleaner = new InputCleaner();
     }
-    public IntegerParser(String inputPath) {
+    public DoubleParser(String inputPath) {
         super(inputPath);
         inputCleaner = new InputCleaner();
     }
 
     // protected methods
     @Override
-    protected Integer toValue(String str) {
-        str = inputCleaner.cleanInt(str);
-        return Integer.getInteger(str);
+    protected Double toValue(String str) {
+        str = inputCleaner.cleanDouble(str);
+        return Double.parseDouble(str);
     }
 
     @Override
-    protected int[] toList(String str) {
-        str = inputCleaner.cleanIntList(str);
-        int[] output;
+    protected double[] toList(String str) {
+        str = inputCleaner.cleanDoubleList(str);
+        double[] output;
         if (str.charAt(0) != '[' && str.charAt(str.length() - 1) != ']') {
-            output = new int[]{toValue(str)};
+            output = new double[]{toValue(str)};
             return output;
         }
         str = str.substring(1, str.length() - 1);
-        if (str.length() == 0) return new int[0];
+        if (str.length() == 0) return new double[0];
         String[] input_contents = str.split(",");
-        output = new int[input_contents.length];
+        output = new double[input_contents.length];
         for (int i = 0; i < input_contents.length; i++) {
             output[i] = toValue(input_contents[i]);
         }
@@ -41,11 +41,11 @@ public class IntegerParser extends AbstractParser<Integer,int[]> implements IPar
     }
 
     @Override
-    protected ArrayList<int[]> toLists(String str) {
-        str = inputCleaner.cleanIntLists(str);
-        ArrayList<int[]> output = new ArrayList<int[]>();
+    protected ArrayList<double[]> toLists(String str) {
+        str = inputCleaner.cleanDoubleLists(str);
+        ArrayList<double[]> output = new ArrayList<double[]>();
         if (str.charAt(0) != '[' && str.charAt(str.length() - 1) != ']') {
-            int[] tmp = {toValue(str)};
+            double[] tmp = {toValue(str)};
             output.add(tmp);
             return output;
         }
@@ -60,8 +60,8 @@ public class IntegerParser extends AbstractParser<Integer,int[]> implements IPar
     }
   
     @Override
-    public ArrayList<Integer> parseDataAsSingleValue() {
-        ArrayList<Integer> output = new ArrayList<Integer>();
+    public ArrayList<Double> parseDataAsSingleValue() {
+        ArrayList<Double> output = new ArrayList<Double>();
         if (inputPath == null || inputPath.length() == 0) {
             return output;
         }
@@ -78,8 +78,8 @@ public class IntegerParser extends AbstractParser<Integer,int[]> implements IPar
     }
 
     @Override
-    public ArrayList<int[]> parseDataAsList() {
-        ArrayList<int[]> output = new ArrayList<int[]>();
+    public ArrayList<double[]> parseDataAsList() {
+        ArrayList<double[]> output = new ArrayList<double[]>();
         if (inputPath == null || inputPath.length() == 0) {
             return output;
         }
@@ -96,8 +96,8 @@ public class IntegerParser extends AbstractParser<Integer,int[]> implements IPar
     }
 
     @Override
-    public ArrayList<ArrayList<int[]>> parseDataAsLists() {
-        ArrayList<ArrayList<int[]>> output = new ArrayList<ArrayList<int[]>>();
+    public ArrayList<ArrayList<double[]>> parseDataAsLists() {
+        ArrayList<ArrayList<double[]>> output = new ArrayList<ArrayList<double[]>>();
         if (inputPath == null || inputPath.length() == 0) {
             return output;
         }

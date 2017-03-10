@@ -12,7 +12,7 @@ public abstract class AbstractParser<S, T> {
     protected AbstractParser(String inputPath) {this.inputPath = inputPath;}
 
     // protected methods
-    abstract protected S toNumber(String str);
+    abstract protected S toValue(String str);
     abstract protected T toList(String str);
     abstract protected ArrayList<T> toLists(String str);
 

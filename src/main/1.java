@@ -3,7 +3,7 @@ package main;
 import objs.*;
 import utils.*;
 import utils.inputparser.*;
-import sols.*;
+import sols.Solution;
 
 //Import the required libraries;
 import java.io.*;

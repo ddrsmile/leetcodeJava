@@ -19,7 +19,7 @@ public class IntegerParser extends AbstractParser<Integer,int[]> implements IPar
     @Override
     protected Integer toValue(String str) {
         str = inputCleaner.cleanInt(str);
-        return Integer.getInteger(str);
+        return Integer.parseInt(str);
     }
 
     @Override

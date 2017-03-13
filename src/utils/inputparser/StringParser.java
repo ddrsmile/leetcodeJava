@@ -17,7 +17,7 @@ public class StringParser extends AbstractParser<String,String[]> implements IPa
     
     @Override
     protected String toValue(String str) {
-        str = str.trim();
+        str = str.trim().replace("\"","");
         return str;
     }
 

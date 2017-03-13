@@ -2,7 +2,8 @@ package main;
 //Import the required classes of LeetCode;
 import objs.*;
 import utils.*;
-import sols.*;
+import utils.inputparser.*;
+import sols.Solution;
 
 //Import the required libraries;
 import java.io.*;
@@ -10,12 +11,13 @@ import java.util.*;
 
 public class Main {
   public static void main(String[] args) throws IOException {
-    InputHandler ih = new InputHandler(args[0]);
+    AbstractParserFactory<Integer, int[]> factory = new IntegerParserFactory();
+    IParser<Integer, int[]> intParser = factory.create(args[0]);
     Solution sol = new Solution();
     
-    ArrayList<Integer> inInt = ih.getDataAsInt();
-    for (int i = 0; i < inInt.size(); i++) {
-      int n = inInt.get(i);
+    ArrayList<Integer> inputValue = intParser.parseDataAsSingleValue();
+    for (int i = 0; i < inputValue.size(); i++) {
+      int n = inputValue.get(i);
       System.out.println(sol.reverse(n));
     }
   }

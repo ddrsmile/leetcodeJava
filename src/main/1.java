@@ -12,7 +12,7 @@ import java.util.*;
 public class Main {
   public static void main(String[] args) throws IOException {
     // create integer parser
-    AbstractParserFactory<Integer, int[]> factory = new IntegerParserFactory();
+    ParserFactory<IntegerParser> factory = new ParserFactory<IntegerParser>(IntegerParser.class);
     IParser<Integer, int[]> intparser = factory.create(args[0]);
     // create solution object
     Solution sol = new Solution();

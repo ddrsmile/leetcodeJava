@@ -11,7 +11,7 @@ import java.util.*;
 
 public class Main {
   public static void main(String[] args) throws IOException {
-    AbstractParserFactory<Integer, int[]> factory = new IntegerParserFactory();
+    ParserFactory<IntegerParser> factory = new ParserFactory<IntegerParser>(IntegerParser.class);
     IParser<Integer, int[]> intParser = factory.create(args[0]);
     Solution sol = new Solution();
     

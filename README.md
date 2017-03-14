@@ -42,7 +42,8 @@ package main;
 //Import the required classes of LeetCode;
 import objs.*;
 import utils.*;
-import sols.*;
+import utils.inputparser;
+import sols.Solution;
 
 //Import the required libraries;
 import java.io.*;
@@ -50,13 +51,16 @@ import java.util.*;
 
 public class Main {
   public static void main(String[] args) throws IOException {
-    InputHandler ih = new InputHandler(args[0]);
+    // create integer parser
+    ParserFactory<IntegerParser> factory = new ParserFactory<IntegerParser>(IntegerParser.class);
+    IParser<Integer, int[]> intparser = factory.create(args[0]);
+    // create solution object
     Solution sol = new Solution();
-
-    ArrayList<int[]> inIntList = ih.getDataAsIntList();
-    for (int i = 0; i < inIntList.size()/2; i++) {
-      int[] nums = inIntList.get(2*i);
-      int target = inIntList.get(2*i + 1)[0];
+    // get input file's contents
+    ArrayList<int[]> inputList = intparser.parseDataAsList();
+    for (int i = 0; i < inputList.size()/2; i++) {
+      int[] nums = inputList.get(2*i);
+      int target = inputList.get(2*i + 1)[0];
       int[] res = sol.twoSum(nums, target);
       System.out.println(Arrays.toString(res));
     }
@@ -64,33 +68,50 @@ public class Main {
 }
 ```
 put the file into "currentdir/src/main/"  
-##### InputHandler
-InputHandler class receives String variable which contents the path of input files to create the object.
-  
-Integer  
+##### InputParser
+InputParser class receives String variable which contents the path of input files to create the object.
+
+###### Methods
 ```
-getDataAsInt() returns ArrayList<Integer>
-getDataAsIntList() returns ArrayList<int[]>
-getDataAsIntLists() returns ArrayList<ArrayList<int[]>>
-getDataAsIntMatrix() returns ArrayList<int[][]>
-```  
-  
-double Float  
+parseDataAsSingleValue() return ArrayList<S>
+parserDataAsList() return ArrayList<T>
+parserDataAsLists() return ArrayList<ArrayList<T>>
 ```
-getDataAsDouble() returns ArrayList<Double>
-getDataAsDoubleList() returns ArrayList<double[]>
-getDataAsDoubleLists() returns ArrayList<ArrayList<double[]>>
-getDataAsIntMatrix() returns ArrayList<int[][]>
-```  
-  
-String  
+
+where `S` is `Integer` for integer parser, `Double` for double parser and `String` for string parser.
+and `T` is `int[]` for integer parser, `double[]` for double parser and `String[]` for string parser.
+
+###### Create Parser
+
+*Integer Parser*
+
 ```
-getDataAsStr() returns ArrayList<String>
-getDataAsStrList() returns ArrayList<String[]>
-```  
+// create integer parser
+ParserFactory<IntegerParser> factory = new ParserFactory<IntegerParser>(IntegerParser.class);
+IParser<Integer, int[]> intParser = factory.create(args[0]);
+```
+
+*Double Parser*
+
+```
+// create integer parser
+ParserFactory<DoubleParser> factory = new ParserFactory<DoubleParser>(DoubleParser.class);
+IParser<Double, double[]> doubleParser = factory.create(args[0]);
+```
+
+*String Parser*
+
+```
+// create integer parser
+ParserFactory<IntegerParser> factory = new ParserFactory<IntegerParser>(IntegerParser.class);
+IParser<Integer, int[]> stringParser = factory.create(args[0]);
+```
+
+where `args[0]` is the path of input file which is defined in `test.sh`
+
   
-##### InputCheck  
-InputCheck class is used by InputHandler.  
+##### InputCleaner
+InputCleaner class is used in InputParser.
 The program will be stopped and the inappropriate contents will be shown when it is detected.  
 The follows are the check points:  
 1. Integer. ``` (1, 2, 34, -4, -62, ...)```  
@@ -105,68 +126,81 @@ The follows are the check points:
 2) [] is valided for the check of the list.  
 3) [], [[]] are valided for the check of the list of the lists.  
 
-
 ### 3. prepare the input file
-write down your input contents in the txt file, and then name the file with the # of problem.  
-one input (one arguement) one line.  
+write down your input contents in the txt file as the test cases, and name the file with the # of problem.  
+one input (one arguement) one line.
+
 ```java
 Solution.sol1(int a)
 Solution.sol2(int a, int b)
 ```  
-For sol1, one line per test case. On the other hand, for sol2, two lines per testcase.  
-For example,
+For sol1, one line per test case. And two lines per testcase for sol2.
+
+For example, the following input contents are used as 1 testcase for `Solution.sol(int[] nums, int target)`
 ```txt
 [2, 7, 11, 15]
 9
 ```
+
 ##### some simple rule
-single int:  
+single int:
 ```txt
 1  
 -2  
 3
-```  
+```
+
 int list:
 ```txt
 [1,3,4]
-```  
+```
+
 int list of the lists:
 ```txt
 [[1,2,3],[4,5,6],[7,8,9]]
-```  
+```
+
 single double float:  
 ```txt
 1.3  
 -0.2  
 3.45
-```  
+```
+
 double float list:
 ```txt
 [1.2,0.31,4.28]
-```  
+```
+
 double float list of the lists:
 ```txt
 [[1.2,0.2,3.4],[5.4,5.02,8.46],[0.27,8.88,9.13]]
-```  
+```
+
 String:  
 ```txt
 "string"
-```  
+```
+
 string list:  
 ```txt
 ["string1","string2","string3"]
-```  
+```
 
 To create the listNode, use int array as input.  
 ```txt
 [1,3,4]
-```  
-To create the binary tree, use String as input. Use # as the null node.
+```
+
+To create the binary tree, use String as input. Use # for the null node.
 ```txt
 [1,2,#,4,5]
 ```  
 
 ### 4. ./test.sh
+
 argument (optional) # of problem
-ex. ">./test.sh 1" will run the problem 1 and show the output.
-ex. ">./test.sh" or ">./test.sh all" will run all the problems and show the results
+
+ex. `>./test.sh 1` will run the problem 1 and show the output.
+
+ex. `>./test.sh` or `>./test.sh all` will run all the problems and show the results

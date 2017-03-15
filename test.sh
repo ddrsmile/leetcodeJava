@@ -2,10 +2,6 @@
 
 # set up the working directories
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-# bin directory
-if [-d "bin" ]; then
-    mkdir bin
-fi
 BIN_DIR=$ROOT_DIR/bin
 CLASSPATH=.:$ROOT_DIR/bin
 
@@ -16,12 +12,13 @@ INPUT_DIR=$ROOT_DIR/input
 
 opt=$1
 
-echo "START TESTING"
+echo "Checking required classes..."
 
 $ROOT_DIR/compile.sh 
-
 MAIN_DIR=$SRC_DIR/main
 
+
+echo "START TEST"
 problems=()
 cnt=0
 if [ "$opt" = "all" ] || [ -z "$opt" ]; then

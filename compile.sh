@@ -3,7 +3,7 @@
 # set up the working directories
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # bin directory
-if [ -d "bin" ]; then
+if [ ! -d "bin" ]; then
     mkdir bin
 fi
 BIN_DIR=$ROOT_DIR/bin

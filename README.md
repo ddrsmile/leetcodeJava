@@ -6,12 +6,16 @@ Besides, not all the solutions are my original works.
 I did consult lots of resource on the internet.  
 Mac OS X  
 
-## Quick Start  
-### 1. `source set_env.sh`
-### 2. prepare the files  
-#### 2.1 solutions  
+## Quick Start
+
+### Prepare the files
+
+#### 1. solutions
+
 write down the solution with the class Solution, and then name the file with the # of the problem.  
-ex. file name like 1.java which contents the solution of problem 1.  
+
+ex. file name like `1.java` which contents the solution of problem 1.
+
 ```java
 package sols;
 import java.util.*;
@@ -33,10 +37,15 @@ public class Solution {
   }
 }
 ```
+
 put the file into "currentdir/src/sols/"
-#### 2.2 main
+
+#### 2. main
+
 write down the main procedure with the class, and then name the file with the # of the problem.  
-ex. file name like 1.java
+
+ex. file name like `1.java`
+
 ```java
 package main;
 //Import the required classes of LeetCode;

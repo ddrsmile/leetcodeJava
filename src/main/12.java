@@ -2,6 +2,7 @@ package main;
 //Import the required classes of LeetCode;
 import objs.*;
 import utils.*;
+import utils.inputparser.*;
 import sols.*;
 
 //Import the required libraries;
@@ -10,12 +11,16 @@ import java.util.*;
 
 public class Main {
   public static void main(String[] args) throws IOException {
-    InputHandler ih = new InputHandler(args[0]);
+    // create integer parser
+    ParserFactory<IntegerParser> factory = new ParserFactory<IntegerParser>(IntegerParser.class);
+    IParser<Integer, int[]> intparser = factory.create(args[0]);
+    // create solution object
     Solution sol = new Solution();
-    
-    ArrayList<Integer> inInt = ih.getDataAsInt();
-    for (int i = 0; i < inInt.size(); i++) {
-      int num = inInt.get(i);
+    // get input file's contents
+    ArrayList<Integer> inputList = intparser.parseDataAsSingleValue();
+    // run solution through all input cases
+    for (int i = 0; i < inputList.size(); i++) {
+      int num = inputList.get(i);
       System.out.println(sol.intToRoman(num));
     }
   }

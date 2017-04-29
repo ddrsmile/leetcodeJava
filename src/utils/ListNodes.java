@@ -54,4 +54,18 @@ public class ListNodes {
     }
     return p;
   }
+
+  public void showList(ListNode head) {
+      if (head == null) {
+          System.out.println("[]");
+          return;
+      }
+      ListNode tmp = head;
+      System.out.print("[");
+      while (tmp.next != null) {
+          System.out.print(tmp.val + ", ");
+          tmp = tmp.next;
+      }
+      System.out.println(tmp.val + "]");
+  }
 }

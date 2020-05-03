@@ -51,6 +51,7 @@ public class LRUCache {
     node.prev = null;
     if (head != null) head.prev = node;
     head = node;
+    if (tail == null) tail = node;
   }
 
   public void removeNode(DoubleLinkedListNode node) {
